@@ -15,7 +15,7 @@ class CodeView(pyglet.window.Window):
         return  x * self.width / self.cols
 
     def mapY(self, y):
-        return (self.height - self.op_left.height) + y * self.height / self.rows
+        return (self.height - self.op_left.height) - y * self.height / self.rows
 
     def __init__(self):
         super(
@@ -56,6 +56,7 @@ class CodeView(pyglet.window.Window):
         self.rows = 4
         self.cols = 4
         self.set_size(self.width, self.height)
+        self.set_location(20, 20)
 
     def on_draw(self):
         if not self.initialized:
@@ -69,7 +70,9 @@ class CodeView(pyglet.window.Window):
 
         for x in range(0, self.cols):
             for y in range(0, self.rows):
+
                 command = self.array[x][y]
+                print x, ',', y, ' is ', command
 
                 if command == 1:  # rotate left
                     self.op_left.x = self.mapX(x)
