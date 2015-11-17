@@ -87,7 +87,7 @@ class TschunkView(pyglet.window.Window):
     def drop(self):
         (x, y) = self.direction
         self.dropTo(self.x + x, self.y + y)
-        #return (self.x + x, self.y + y)
+        return (self.x + x, self.y + y)
 
     def setDirection(self, direction):
         self.direction = direction
