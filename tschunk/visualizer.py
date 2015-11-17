@@ -6,4 +6,5 @@ class visualizer(object):
         pass
 
     def visualize_position(self, position):
-        print("Current position:" + str(position))
+        pass
+        #print("Current position:" + str(position))

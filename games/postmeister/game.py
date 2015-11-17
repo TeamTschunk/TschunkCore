@@ -30,21 +30,18 @@ class game(object):
             directions = [(0, -1), (1, 0), (0, 1), (-1, 0)]
             self.direction = (self.direction + 1) % 4
             self.mapView.setDirection(directions[self.direction])
-            print 'rotated left'
+            #print 'rotated left'
         elif command == 3:  # streight
             self.mapView.move()
             self.mapView.move()
             self.mapView.move()
-            print 'went straight'
+            #print 'went straight'
         elif command == 4:
             print 'did nothing'
         elif command == 5:
-            print "dropping"
             dropedTo = self.mapView.drop()
-            print "hallop"
-            print(dropedTo)
             self.droppedLetters.append(dropedTo)
-            print 'dropped'
+            #print 'dropped'
 
         if sorted(self.droppedLetters) == sorted(self.map.postBoxes):
             print 'Every Letter delivered'

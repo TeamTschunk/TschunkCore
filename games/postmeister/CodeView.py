@@ -74,7 +74,6 @@ class CodeView(pyglet.window.Window):
             for y in range(0, self.rows):
 
                 command = self.array[x][y]
-                print x, ',', y, ' is ', command
 
                 if command == 1:  # rotate left
                     self.op_left.x = self.mapX(x)
