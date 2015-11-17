@@ -17,7 +17,7 @@ class vision(object):
     cam = Camera(2)
 
     def get_commands_array(self):
-        return [[3, 1, 3, 5], [4, 0, 0, 1], [4, 1, 3, 1], [0, 0, 0, 0]]
+        #return [[3, 1, 3, 5], [4, 0, 0, 1], [4, 1, 3, 1], [0, 0, 0, 0]]
 
         img = self.cam.getImage()
         img.save('image.jpg')
