@@ -46,6 +46,15 @@ class TschunkView(pyglet.window.Window):
         glEnable(GL_BLEND)
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 
+        arrow  = pyglet.resource.image('games/postmeister/img/arrow.png')
+        self.img_arrow  = pyglet.sprite.Sprite(arrow)
+        self.img_arrow.scale = float(self.y_step) / self.img_arrow.width
+
+        #rotate around the center:
+        self.img_arrow.image.anchor_x = self.img_arrow.image.width / 2
+        self.img_arrow.image.anchor_y = self.img_arrow.image.height / 2
+        self.img_arrow.rotation = 90
+
         #self.l = primitives.Line((0,0),(100,100),stroke=10,color=(1,0,0,1))
         self.c = primitives.Circle(
             start_x, start_y, width=self.y_step, color=(
@@ -68,10 +77,15 @@ class TschunkView(pyglet.window.Window):
         self.c.x = self.mapX(self.x)
         self.c.y = self.mapY(self.y)
 
+        self.img_arrow.x = self.mapX(self.x)# - self.img_arrow.width/2
+        self.img_arrow.y = self.mapY(self.y)# - self.img_arrow.height/2
+
         self.clear()
         self.sprite.draw()
         # self.l.render()
         self.c.render()
+        self.img_arrow.draw()
+
         for drop in self.drops:
             drop.render()
         # self.fps_display.draw()
@@ -103,6 +117,8 @@ class TschunkView(pyglet.window.Window):
 
     def setDirection(self, direction):
         self.direction = direction
+        # this is a hack, since we only rotate left atm:
+        self.img_arrow.rotation -= 90
 
     def moveTo(self, x, y):
         self.x = x
