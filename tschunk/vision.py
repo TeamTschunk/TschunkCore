@@ -1,6 +1,7 @@
 import zbar
 from PIL import Image
 from SimpleCV import Image as SimpleImage, Camera
+import ImageEnhance
 
 
 class vision(object):
@@ -11,6 +12,11 @@ class vision(object):
         img = self.cam.getImage()
         img.save('image.jpg')
         pil = img.getPIL().convert('L')
+
+        # enhance contrast
+        contrast = ImageEnhance.Contrast(pil)
+        pil = contrast.enhance(2);
+
         width, height = pil.size
 
         scanner = zbar.ImageScanner()
