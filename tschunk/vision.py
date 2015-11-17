@@ -15,6 +15,9 @@ import ImageEnhance
 class vision(object):
 
     cam = Camera(2)
+    
+    def __init__(self):
+        self.commands_array = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
     def get_commands_array(self):
         #return [[3, 1, 3, 5], [4, 0, 0, 1], [4, 1, 3, 1], [0, 0, 0, 0]]
@@ -53,6 +56,15 @@ class vision(object):
                     break
                 y += 1
             x += 1
+            
+        if (true):
+            for x in range(0,3):
+                for y in range(0,3):
+                    if commands_array[x][y] == 0:
+                        if self.commands_array[x][y] > 0:
+                            commands_array[x][y] = self.commands_array[x][y]
+            self.commands_array = commands_array
+                
 
         print commands_array
         return commands_array
