@@ -57,9 +57,9 @@ class vision(object):
                 y += 1
             x += 1
             
-        if (true):
-            for x in range(0,3):
-                for y in range(0,3):
+        if (True):
+            for x in range(0,4):
+                for y in range(0,4):
                     if commands_array[x][y] == 0:
                         if self.commands_array[x][y] > 0:
                             commands_array[x][y] = self.commands_array[x][y]
