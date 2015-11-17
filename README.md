@@ -26,4 +26,5 @@ The code will probably be based on an existing augmented reality technology fram
 ```
 sudo apt-get install python-opencv python-pygame python-numpy python-scipy
 sudo apt-get install python-pyglet
+sudo apt-get install python-zbar
 ```
