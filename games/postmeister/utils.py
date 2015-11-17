@@ -5,6 +5,7 @@
 import pyglet
 from pyglet.gl import *
 
+
 def screenshot(name='screenshot'):
     """
     Take a screenshot
@@ -14,7 +15,8 @@ def screenshot(name='screenshot'):
         always save as .png
     """
     # Get the 'the back-left color buffer'
-    pyglet.image.get_buffer_manager().get_color_buffer().save('%s.png'%name)
+    pyglet.image.get_buffer_manager().get_color_buffer().save('%s.png' % name)
+
 
 def getPixelValue(x, y):
     """
@@ -23,8 +25,11 @@ def getPixelValue(x, y):
     # BufferManager, ColorBufferImage
     color_buffer = pyglet.image.get_buffer_manager().get_color_buffer()
     # AbstractImage, ImageData, sequece of bytes
-    pix = color_buffer.get_region(x,y,1,1).get_image_data().get_data("RGBA", 4)
+    pix = color_buffer.get_region(
+        x, y, 1, 1).get_image_data().get_data(
+        "RGBA", 4)
     return pix[0], pix[1], pix[2], pix[3]
+
 
 def drawPoint(x, y, color):
     """
@@ -32,7 +37,8 @@ def drawPoint(x, y, color):
     """
     pyglet.graphics.draw(1, GL_POINTS,
                          ('v2i', (x, y)),
-                         ('c3B', (color[0], color[1], color[2]) ) )
+                         ('c3B', (color[0], color[1], color[2])))
+
 
 def getSmoothConfig():
     """
@@ -48,6 +54,7 @@ def getSmoothConfig():
         config = None
     return config
 
+
 def printEvents(window):
     """
     Debug tool that will print the events to the console.
@@ -55,6 +62,7 @@ def printEvents(window):
     window is an instance of a Window object receiving the events.
     """
     window.push_handlers(pyglet.window.event.WindowEventLogger())
+
 
 def playMusic(music):
     """
@@ -64,6 +72,7 @@ def playMusic(music):
     """
     music = pyglet.resource.media(music)
     music.play()
+
 
 def setBackgroundColor(color):
     """

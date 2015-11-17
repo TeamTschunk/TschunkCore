@@ -9,6 +9,7 @@ from TschunkView import *
 # 6 ... Start
 # 7 ... Stop
 
+
 class game(object):
 
     def __init__(self):
@@ -21,12 +22,12 @@ class game(object):
 
         command = commands_graph.valueForPosition(current_tile)
 
-        if command == 1: # rotate left
+        if command == 1:  # rotate left
             directions = [(0, -1), (1, 0), (0, 1), (-1, 0)]
             self.direction = (self.direction + 1) % 4
             self.mapView.setDirection(directions[self.direction])
             print 'rotated left'
-        elif command == 3: # streight
+        elif command == 3:  # streight
             self.mapView.move()
             self.mapView.move()
             self.mapView.move()
@@ -40,30 +41,28 @@ class game(object):
             print(dropedTo)
             self.droppedLetters.append(dropedTo)
             print 'dropped'
-            
+
         if sorted(self.droppedLetters) == sorted(self.map.postBoxes):
             print 'Every Letter delivered'
             return (-1, -1)
-        
+
         neighbors = commands_graph.neighbors(current_tile)
         if previous_tile in neighbors:
             neighbors.remove(previous_tile)
-        
+
         preferred = []
         for neighbor in neighbors:
             if commands_graph.valueForPosition(neighbor) != 4:
                 preferred.append(neighbor)
-        
+
         if len(preferred) > 0:
             selected = random.choice(preferred)
             if commands_graph.valueForPosition(selected) != 7:
                 return selected
 
-        if len(neighbors) > 0 :
+        if len(neighbors) > 0:
             selected = random.choice(neighbors)
             if commands_graph.valueForPosition(selected) != 7:
                 return selected
-            
+
         return previous_tile
-
-

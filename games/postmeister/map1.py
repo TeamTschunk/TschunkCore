@@ -1,5 +1,5 @@
 
-class TschunkMap1(): #(TschunkMap):
+class TschunkMap1():  # (TschunkMap):
 
     def __init__(self):
         self.img = 'games/postmeister/img/map1.png'
@@ -12,4 +12,4 @@ class TschunkMap1(): #(TschunkMap):
         self.origin_y = 14
 
         self.initial_direction = (0, -1)
-        self.postBoxes = [(5,2),(5,5),(5,8),(5,11)]
+        self.postBoxes = [(5, 2), (5, 5), (5, 8), (5, 11)]

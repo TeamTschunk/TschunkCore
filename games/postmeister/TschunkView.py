@@ -9,6 +9,7 @@ import threading
 FPS = 60
 smoothConfig = utils.getSmoothConfig()
 
+
 class TschunkView(pyglet.window.Window):
 
     def mapX(self, x):
@@ -18,7 +19,12 @@ class TschunkView(pyglet.window.Window):
         return self.cord_origin_y + y * self.y_step
 
     def __init__(self, mymap):
-        super(TschunkView, self).__init__(fullscreen=False, caption='Tschunk!', config=smoothConfig)
+        super(
+            TschunkView,
+            self).__init__(
+            fullscreen=False,
+            caption='Tschunk!',
+            config=smoothConfig)
 
         self.map = mymap
 
@@ -27,8 +33,8 @@ class TschunkView(pyglet.window.Window):
 
         self.y_step = self.image.height / mymap.rows + 1
         self.x_step = self.image.width / mymap.cols + 1
-        self.cord_origin_x = self.x_step/2
-        self.cord_origin_y = self.y_step/2
+        self.cord_origin_x = self.x_step / 2
+        self.cord_origin_y = self.y_step / 2
 
         self.x = mymap.origin_x
         self.y = mymap.origin_y
@@ -41,7 +47,9 @@ class TschunkView(pyglet.window.Window):
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 
         #self.l = primitives.Line((0,0),(100,100),stroke=10,color=(1,0,0,1))
-        self.c = primitives.Circle(start_x, start_y,width=self.y_step,color=(1.,0.,0.,1.))
+        self.c = primitives.Circle(
+            start_x, start_y, width=self.y_step, color=(
+                1., 0., 0., 1.))
         self.drops = []
 
         # Setup debug framerate display:
@@ -61,28 +69,31 @@ class TschunkView(pyglet.window.Window):
 
         self.clear()
         self.sprite.draw()
-        #self.l.render()
+        # self.l.render()
         self.c.render()
         for drop in self.drops:
             drop.render()
-        #self.fps_display.draw()
+        # self.fps_display.draw()
 
-    #def update(self, dt):
+    # def update(self, dt):
      #   if self.c.y  - self.y_step > 0:
        #     self.c.y -= self.y_step
 
-    #def on_mouse_motion(self, x, y, dx, dy):
+    # def on_mouse_motion(self, x, y, dx, dy):
         # nothing to do here if not in debug
-        #print x, y
+        # print x, y
 
-    def run(self, callback=lambda s:None):
+    def run(self, callback=lambda s: None):
         self.thread = threading.Thread(target=callback)
         self.thread.setDaemon(True)
         self.thread.start()
         pyglet.app.run()
 
     def dropTo(self, x, y):
-        self.drops.append(primitives.Circle(self.mapX(x), self.mapY(y),width=self.y_step,color=(0.,.9,0.,1.)))
+        self.drops.append(
+            primitives.Circle(
+                self.mapX(x), self.mapY(y), width=self.y_step, color=(
+                    0., .9, 0., 1.)))
 
     def drop(self):
         (x, y) = self.direction
@@ -102,7 +113,7 @@ class TschunkView(pyglet.window.Window):
     def moveBy(self, direction):
         (x, y) = direction
         success = False
-        if self.y + y > 0 and self.y  + y < self.map.rows:
+        if self.y + y > 0 and self.y + y < self.map.rows:
             self.y += y
             success = True
 
@@ -115,5 +126,3 @@ class TschunkView(pyglet.window.Window):
 if __name__ == '__main__':
     TschunkView(TschunkMap1())
     sys.exit(pyglet.app.run())
-
-
