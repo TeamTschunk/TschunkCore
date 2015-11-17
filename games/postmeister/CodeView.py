@@ -40,6 +40,9 @@ class CodeView(pyglet.window.Window):
         straight  = pyglet.resource.image('games/postmeister/img/op_straight.png')
         self.op_straight  = pyglet.sprite.Sprite(straight)
 
+        start  = pyglet.resource.image('games/postmeister/img/op_start.png')
+        self.op_start  = pyglet.sprite.Sprite(start)
+
         self.initialized = False
 
         # Setup debug framerate display:
@@ -68,6 +71,7 @@ class CodeView(pyglet.window.Window):
         self.op_nop.scale = (self.width/self.cols)/500.
         self.op_drop.scale = (self.width/self.cols)/500.
         self.op_straight.scale = (self.width/self.cols)/500.
+        self.op_start.scale = (self.width/self.cols)/500.
         self.height = int(self.width * (600./1000.))
 
         for x in range(0, self.cols):
@@ -91,6 +95,10 @@ class CodeView(pyglet.window.Window):
                     self.op_drop.x = self.mapX(x)
                     self.op_drop.y = self.mapY(y)
                     self.op_drop.draw()
+                elif command == 6: # start
+                    self.op_start.x = self.mapX(x)
+                    self.op_start.y = self.mapY(y)
+                    self.op_start.draw()
 
         (x, y) = self.current
         tile_height = self.op_left.height
