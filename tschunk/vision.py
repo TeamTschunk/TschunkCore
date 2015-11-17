@@ -14,6 +14,8 @@ import ImageEnhance
 
 class vision(object):
 
+    # return [[3, 1, 3, 5], [4, 0, 0, 1], [4, 1, 3, 1], [0, 0, 0, 0]]
+
     cam = Camera(2)
 
     def get_commands_array(self):
