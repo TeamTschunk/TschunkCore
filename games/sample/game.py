@@ -12,13 +12,6 @@ class game(object):
         
         if len(neighbors) > 0 :
             r_neighbor = random.choice(neighbors)
-            print "found " + str(r_neighbor) + " in " + str(neighbors)
             if commands_graph.valueForPosition(r_neighbor) != 5:
-                print "returning " + str(r_neighbor)
                 return r_neighbor
         return (-1,-1)
-    
-    
-    
-    
-    
