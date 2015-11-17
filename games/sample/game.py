@@ -1,5 +1,5 @@
 import random
-
+import os
 
 class game(object):
 
@@ -10,9 +10,18 @@ class game(object):
         neighbors = commands_graph.neighbors(current_tile)
         if previous_tile in neighbors:
             neighbors.remove(previous_tile)
+            
+        value = commands_graph.valueForPosition(current_tile)
+        self.beep(value)
 
         if len(neighbors) > 0:
-            r_neighbor = random.choice(neighbors)
-            if commands_graph.valueForPosition(r_neighbor) != 5:
-                return r_neighbor
-        return (-1, -1)
+            selected = random.choice(neighbors)
+            if commands_graph.valueForPosition(selected) != 7:
+                return selected
+
+        return previous_tile
+    
+    def beep(self, value):
+        
+        notes = [262, 294, 330, 349, 392, 440, 494]
+        os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % (0.5, notes[value]))
