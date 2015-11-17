@@ -47,7 +47,7 @@ class vision(object):
                 scanner.scan(image)
 
                 for symbol in image:
-                    commands_array[x][y] = symbol.data
+                    commands_array[x][y] = int(symbol.data)
                     break
                 y += 1
             x += 1
