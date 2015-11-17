@@ -41,14 +41,12 @@ class vision(object):
                 crop_image = pil.crop(crop_box)
                 crop_image.save('image' + `image_count` + '.jpg')
 
-                raw = crop_image.tostring()
+                raw = crop_image.tobytes()
                 # todo: what is Y800?
                 image = zbar.Image((width / 4), (height / 4), 'Y800', raw)
                 scanner.scan(image)
 
                 for symbol in image:
-                    # do something useful with results
-                    print 'decoded', symbol.type, 'symbol', '"%s"' % symbol.data
                     commands_array[x][y] = symbol.data
                     break
                 y += 1
