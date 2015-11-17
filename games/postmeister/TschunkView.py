@@ -62,6 +62,7 @@ class TschunkView(pyglet.window.Window):
         #pyglet.clock.schedule_interval(self.update, 1.0)
 
         self.set_size(self.image.width, self.image.height)
+        self.set_location(1000, 20)
 
     def on_draw(self):
         self.c.x = self.mapX(self.x)
