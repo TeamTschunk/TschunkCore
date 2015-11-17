@@ -12,3 +12,4 @@ class TschunkMap1(): #(TschunkMap):
         self.origin_y = 14
 
         self.initial_direction = (0, -1)
+        self.postBoxes = [(6,3),(6,6),(6,9),(6,12)]
