@@ -4,6 +4,14 @@ from SimpleCV import Image as SimpleImage, Camera
 import ImageEnhance
 
 
+# Command Values
+# 1 ... Left
+# 3 ... Straight
+# 4 ... Non Operation
+# 5 ... Drop
+# 6 ... Start
+
+
 class vision(object):
 
     cam = Camera(2)
