@@ -22,5 +22,8 @@ The project itself is entirely new, so no code has yet been written.
 The code will probably be based on an existing augmented reality technology framework or use a computer vision library (like OpenCV).
 
 ## Install
+
+```
 sudo apt-get install python-opencv python-pygame python-numpy python-scipy
 sudo apt-get install python-pyglet
+```
