@@ -59,6 +59,8 @@ class CodeView(pyglet.window.Window):
         self.set_location(20, 20)
 
     def on_draw(self):
+        self.clear()
+
         if not self.initialized:
             return
 
