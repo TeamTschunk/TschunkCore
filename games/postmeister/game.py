@@ -1,5 +1,6 @@
 import random
 from TschunkView import *
+from CodeView import *
 
 # Command Values
 # 1 ... Left
@@ -14,11 +15,14 @@ class game(object):
 
     def __init__(self):
         self.map = TschunkMap1()
+        self.codeView = CodeView()
         self.mapView = TschunkView(self.map)
         self.direction = 0
         self.droppedLetters = []
 
     def perform_step(self, commands_graph, current_tile, previous_tile):
+
+        self.codeView.updateCode(commands_graph, current_tile)
 
         command = commands_graph.valueForPosition(current_tile)
 
