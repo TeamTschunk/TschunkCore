@@ -109,18 +109,20 @@ class TschunkView(pyglet.window.Window):
         self.y = y
 
     def move(self):
-        self.moveBy(self.direction)
+        return self.moveBy(self.direction)
 
     def moveBy(self, direction):
         (x, y) = direction
-        success = False
-        if self.y + y > 0 and self.y + y < self.map.rows:
+        success = True
+        if self.y + y >= 0 and self.y + y < self.map.rows:
             self.y += y
-            success = True
+        else:
+            success = False
 
-        if self.x + x > 0 and self.x + x < self.map.cols:
+        if self.x + x >= 0 and self.x + x < self.map.cols:
             self.x += x
-            success = True
+        else:
+            success = False
 
         return success
 

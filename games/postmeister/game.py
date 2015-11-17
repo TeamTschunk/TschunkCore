@@ -32,12 +32,13 @@ class game(object):
             self.mapView.setDirection(directions[self.direction])
             #print 'rotated left'
         elif command == 3:  # streight
-            self.mapView.move()
-            self.mapView.move()
-            self.mapView.move()
+            if not self.mapView.move() or not self.mapView.move() or not self.mapView.move():
+                print 'Game Over'
+                return (-1, -1)
             #print 'went straight'
         elif command == 4:
-            print 'did nothing'
+            #print 'did nothing'
+            pass
         elif command == 5:
             dropedTo = self.mapView.drop()
             self.droppedLetters.append(dropedTo)
