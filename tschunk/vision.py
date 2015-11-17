@@ -1,14 +1,7 @@
-
-# Command Values
-# 1 ... Left
-# 3 ... Straight
-# 4 ... Non Operation
-# 5 ... Drop
-# 6 ... Start
-
 import zbar
 from PIL import Image
 from SimpleCV import Image as SimpleImage, Camera
+
 
 class vision(object):
 
@@ -40,4 +33,4 @@ class vision(object):
             # do something useful with results
             print 'decoded', symbol.type, 'symbol', '"%s"' % symbol.data
 
-        return [[6, 0, 0, 0], [3, 0, 0, 0], [1, 0, 0, 0], [3, 5, 0, 0]]
+        return [[6, 3, 1, 3], [0, 0, 0, 5], [0, 0, 0, 0], [0, 0, 0, 0]]

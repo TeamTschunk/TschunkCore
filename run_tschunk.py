@@ -1,5 +1,5 @@
 from tschunk import tschunk
-from games.sample import game
+from games.postmeister import game
 
 # modulename = "sample"
 # game_module = __import__("games." + modulename, fromlist=['blah'])
