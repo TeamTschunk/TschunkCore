@@ -67,4 +67,4 @@ class game(object):
             if commands_graph.valueForPosition(selected) != 7:
                 return selected
 
-        return previous_tile
+        return (-1, -1)
