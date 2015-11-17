@@ -101,6 +101,7 @@ class CodeView(pyglet.window.Window):
         self.cols = len(commands_graph.array[0])
 
         self.array = commands_graph.array
+        self.current = current_tile
 
         self.initialized= True
 
