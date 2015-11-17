@@ -91,6 +91,17 @@ class CodeView(pyglet.window.Window):
                     self.op_drop.y = self.mapY(y)
                     self.op_drop.draw()
 
+        (x, y) = self.current
+        tile_height = self.op_left.height
+        tile_width = self.op_left.width
+
+        rect = primitives.Polygon([(self.mapX(x), self.mapY(y)),
+                                        (self.mapX(x), self.mapY(y) + tile_height),
+                                        (self.mapX(x) + tile_width, self.mapY(y) + tile_height),
+                                        (self.mapX(x) + tile_width, self.mapY(y))
+                                         ],color=(.3, 0.2, 0.5, .7))
+        rect.render()
+
         #self.op_left.x = self.mapX(0)
         #self.op_left.y = self.mapY(0)
         #self.op_left.draw()
