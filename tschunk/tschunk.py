@@ -12,7 +12,8 @@ class tschunk(object):
         self.game = game
 
     def run(self):
-        commands_array = self.vision.get_commands_array()
+        for i in range(0, 5):
+            commands_array = self.vision.get_commands_array()
         self.command_graph = command_graph(commands_array)
         self.current_tile = self.get_launch_tile()
         self.previous_tile = (-1, -1)
@@ -30,6 +31,10 @@ class tschunk(object):
             self.command_graph = command_graph(commands_array)
 
     def get_launch_tile(self):
+        for x in range(0, 4):
+            for y in range(0, 4):
+                if self.command_graph.array[x][y] == 6:
+                    return (x, y);
         return (0, 0)
 
     def generate_commands_graph(self):
