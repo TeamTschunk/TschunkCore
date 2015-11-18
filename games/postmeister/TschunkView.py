@@ -5,6 +5,7 @@ import primitives
 import utils
 from map1 import *
 import threading
+import time
 
 FPS = 60
 smoothConfig = utils.getSmoothConfig()
@@ -177,6 +178,7 @@ class TschunkView(pyglet.window.Window):
         else:
             success = False
 
+        time.sleep(0.2)
         return success
 
 if __name__ == '__main__':
