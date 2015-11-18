@@ -14,7 +14,7 @@ import ImageEnhance
 
 class vision(object):
 
-    cam = Camera(2)
+    cam = Camera(1)
     
     def __init__(self):
         self.commands_array = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
