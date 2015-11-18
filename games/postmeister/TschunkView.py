@@ -46,7 +46,7 @@ class TschunkView(pyglet.window.Window):
         glEnable(GL_BLEND)
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 
-        arrow  = pyglet.resource.image('games/postmeister/img/arrow.png')
+        arrow = pyglet.resource.image('games/postmeister/img/arrow.png')
         self.img_arrow  = pyglet.sprite.Sprite(arrow)
         self.img_arrow.scale = float(self.y_step) / self.img_arrow.width
 
