@@ -88,6 +88,8 @@ class TschunkView(pyglet.window.Window):
 
         self.figure = self.figures[self.img_arrow.rotation]
 
+        self.mail  = pyglet.resource.image('games/postmeister/img/mail.png')
+
         #self.l = primitives.Line((0,0),(100,100),stroke=10,color=(1,0,0,1))
         self.c = primitives.Circle(
             start_x, start_y, width=self.y_step, color=(
@@ -123,7 +125,7 @@ class TschunkView(pyglet.window.Window):
         self.figure.draw()
 
         for drop in self.drops:
-            drop.render()
+            drop.draw()
         # self.fps_display.draw()
 
     # def update(self, dt):
@@ -141,10 +143,17 @@ class TschunkView(pyglet.window.Window):
         pyglet.app.run()
 
     def dropTo(self, x, y):
-        self.drops.append(
-            primitives.Circle(
-                self.mapX(x), self.mapY(y), width=self.y_step, color=(
-                    0., .9, 0., 1.)))
+        img_mail  = pyglet.sprite.Sprite(self.mail)
+        img_mail.scale = float(self.y_step) / img_mail.width
+        img_mail.image.anchor_x = img_mail.image.width / 2
+        img_mail.image.anchor_y = img_mail.image.height / 2
+        img_mail.x = self.mapX(x)
+        img_mail.y = self.mapY(y)
+
+        self.drops.append(img_mail)
+        #    primitives.Circle(
+        #       self.mapX(x), self.mapY(y), width=self.y_step, color=(
+        #          0., .9, 0., 1.)))
 
     def drop(self):
         (x, y) = self.direction
@@ -155,7 +164,6 @@ class TschunkView(pyglet.window.Window):
         self.direction = direction
         # this is a hack, since we only rotate left atm:
         self.img_arrow.rotation = (self.img_arrow.rotation - 90) % 360
-        print self.img_arrow.rotation
         self.figure = self.figures[self.img_arrow.rotation]
 
     def moveTo(self, x, y):
