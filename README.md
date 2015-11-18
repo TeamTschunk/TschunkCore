@@ -1,6 +1,6 @@
 # TschunkCore
 
-This repository contains the main parts of our code for the [2015 EUhackathon](http://www.2015.euhackathon.eu/participants/#team-tschunk).
+This repository contains the main parts of our code for the [2015 EUhackathon](http://www.2015.euhackathon.eu/participants/#team-tschunk). Read more on [our website](https://teamtschunk.github.io/).
 
 ## Proposal
 
