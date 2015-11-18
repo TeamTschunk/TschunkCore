@@ -26,3 +26,9 @@ The code will probably be based on an existing augmented reality technology fram
 ```
 sudo apt-get install python-opencv python-pygame python-numpy python-scipy python-pyglet python-zbar
 ```
+
+## Credits
+
+* Code, accessories & hardware by Team Tschukn (Lukas Burgstaller, Stefan More, Peter Grassberger)
+* Tiles via [Online-Tile-Map-Editor](https://github.com/elias-schuett/Online-Tile-Map-Editor) by Elias Schütt
+* Sprites by [DoubleLeggy](http://doubleleggy.deviantart.com/art/RE1-Sprites-v1-0-148697818)
