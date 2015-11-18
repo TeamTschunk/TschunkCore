@@ -20,7 +20,7 @@ class vision(object):
         self.commands_array = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
     def get_commands_array(self):
-        #return [[3, 1, 3, 5], [4, 0, 0, 1], [4, 1, 3, 1], [0, 0, 0, 0]]
+        #return [[6, 4, 1, 3], [3, 0, 0, 1], [1, 3, 5, 1], [0, 0, 0, 0]]
 
         for i in range(0, 3):
             img = self.cam.getImage()
