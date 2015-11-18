@@ -46,7 +46,37 @@ class TschunkView(pyglet.window.Window):
         glEnable(GL_BLEND)
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 
-        arrow = pyglet.resource.image('games/postmeister/img/arrow.png')
+        down  = pyglet.resource.image('games/postmeister/img/figure_down.png')
+        self.img_down  = pyglet.sprite.Sprite(down)
+        self.img_down.scale = float(self.y_step) / self.img_down.width
+        self.img_down.image.anchor_x = self.img_down.image.width / 2
+        self.img_down.image.anchor_y = self.img_down.image.height / 2
+
+        up  = pyglet.resource.image('games/postmeister/img/figure_up.png')
+        self.img_up  = pyglet.sprite.Sprite(up)
+        self.img_up.scale = float(self.y_step) / self.img_up.width
+        self.img_up.image.anchor_x = self.img_up.image.width / 2
+        self.img_up.image.anchor_y = self.img_up.image.height / 2
+
+        left  = pyglet.resource.image('games/postmeister/img/figure_left.png')
+        self.img_left  = pyglet.sprite.Sprite(left)
+        self.img_left.scale = float(self.y_step) / self.img_left.width
+        self.img_left.image.anchor_x = self.img_left.image.width / 2
+        self.img_left.image.anchor_y = self.img_left.image.height / 2
+
+        right  = pyglet.resource.image('games/postmeister/img/figure_right.png')
+        self.img_right  = pyglet.sprite.Sprite(right)
+        self.img_right.scale = float(self.y_step) / self.img_right.width
+        self.img_right.image.anchor_x = self.img_right.image.width / 2
+        self.img_right.image.anchor_y = self.img_right.image.height / 2
+
+        self.figures = dict()
+        self.figures[90] = self.img_down
+        self.figures[0] = self.img_right
+        self.figures[270] = self.img_up
+        self.figures[180] = self.img_left
+
+        arrow  = pyglet.resource.image('games/postmeister/img/arrow.png')
         self.img_arrow  = pyglet.sprite.Sprite(arrow)
         self.img_arrow.scale = float(self.y_step) / self.img_arrow.width
 
@@ -54,6 +84,8 @@ class TschunkView(pyglet.window.Window):
         self.img_arrow.image.anchor_x = self.img_arrow.image.width / 2
         self.img_arrow.image.anchor_y = self.img_arrow.image.height / 2
         self.img_arrow.rotation = 90
+
+        self.figure = self.figures[self.img_arrow.rotation]
 
         #self.l = primitives.Line((0,0),(100,100),stroke=10,color=(1,0,0,1))
         self.c = primitives.Circle(
@@ -79,12 +111,15 @@ class TschunkView(pyglet.window.Window):
 
         self.img_arrow.x = self.mapX(self.x)# - self.img_arrow.width/2
         self.img_arrow.y = self.mapY(self.y)# - self.img_arrow.height/2
+        self.figure.x = self.mapX(self.x)# - self.img_arrow.width/2
+        self.figure.y = self.mapY(self.y)# - self.img_arrow.height/2
 
         self.clear()
         self.sprite.draw()
         # self.l.render()
-        self.c.render()
-        self.img_arrow.draw()
+        #self.c.render()
+        #self.img_arrow.draw()
+        self.figure.draw()
 
         for drop in self.drops:
             drop.render()
@@ -118,7 +153,9 @@ class TschunkView(pyglet.window.Window):
     def setDirection(self, direction):
         self.direction = direction
         # this is a hack, since we only rotate left atm:
-        self.img_arrow.rotation -= 90
+        self.img_arrow.rotation = (self.img_arrow.rotation - 90) % 360
+        print self.img_arrow.rotation
+        self.figure = self.figures[self.img_arrow.rotation]
 
     def moveTo(self, x, y):
         self.x = x
